@@ -1,2 +1,3 @@
 # AirBnB_clone
-ALX's copy of airbnb website
+## Project Discription:
+A simple copy of airbnb website
