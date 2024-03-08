@@ -3,7 +3,7 @@
 import cmd
 
 
-class CmdInterpreter(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
     """Defines the command interpreter"""
     prompt = "(hbnb) "
 
@@ -12,8 +12,7 @@ class CmdInterpreter(cmd.Cmd):
         pass
 
     def do_quit(self, line):
-        """Exit when reciving quit"""
-        print("")
+        """Quit command to exit the program\n"""
         return True
 
     def do_EOF(self, line):
@@ -23,4 +22,4 @@ class CmdInterpreter(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    CmdInterpreter().cmdloop()
+    HBNBCommand().cmdloop()
