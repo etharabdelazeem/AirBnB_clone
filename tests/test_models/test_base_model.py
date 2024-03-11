@@ -32,6 +32,8 @@ class Test_save(unittest.TestCase):
         self.assertLess(first_updated_at, bm.updated_at)
     def test_str(self):
         """ """
+        self.name = 'BaseModel'
+        self.value = BaseModel
         i = self.value()
         self.assertEqual(str(i), '[{}] ({}) {}'.format(self.name, i.id, i.__dict__))
 
