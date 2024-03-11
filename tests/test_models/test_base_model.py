@@ -30,6 +30,11 @@ class Test_save(unittest.TestCase):
         first_updated_at = bm.updated_at
         bm.save()
         self.assertLess(first_updated_at, bm.updated_at)
+    def test_str(self):
+        """ """
+        i = self.value()
+        self.assertEqual(str(i), '[{}] ({}) {}'.format(self.name, i.id, i.__dict__))
+
 
 
 class Test_to_dict(unittest.TestCase):
