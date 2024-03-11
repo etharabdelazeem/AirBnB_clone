@@ -3,6 +3,7 @@
 from tests.test_models.test_base_model import Test_instantiation
 from models.user import User
 
+
 class test_User(Test_instantiation):
     """Tests user"""
     def __init__(self, *args, **kwargs):
