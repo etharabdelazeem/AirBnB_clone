@@ -23,9 +23,9 @@ class BaseModel:
             self.__dict__.update(kwargs)
 
     def __str__(self):
-        """returns a string representation of the instance"""
-        return "[{}] ({}) {}".\
-            format(type(self).__name__, self.id, self.__dict__)
+        """Returns a string representation of the instance"""
+        cls = (str(type(self)).split('.')[-1]).split('\'')[0]
+        return '[{}] ({}) {}'.format(cls, self.id, self.__dict__)
 
     def save(self):
         """updates the public instance attribute updated_at"""
