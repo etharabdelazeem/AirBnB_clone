@@ -5,11 +5,11 @@ import sys
 from models.base_model import BaseModel
 from models.__init__ import storage
 from models.user import User
-"""from models.place import Place
+from models.place import Place
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
-from models.review import Review"""
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -17,7 +17,9 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) " if sys.__stdin__.isatty() else ''
 
     classes = {
-            'BaseModel': BaseModel, 'User': User
+            'BaseModel': BaseModel, 'User': User,
+            "State": State, "City": City,"Place": Place,
+            "Amenity": Amenity, "Review": Review
             }
     commands = ['all', 'count', 'show', 'destroy', 'update']
     types = {
@@ -45,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         elif args not in HBNBCommand.classes:
-            print("** class doesn't exist")
+            print("** class doesn't exist **")
             return
         new_instance = HBNBCommand.classes[args]()
         storage.save()
