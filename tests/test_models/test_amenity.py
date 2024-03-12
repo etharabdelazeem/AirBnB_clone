@@ -3,6 +3,7 @@
 from tests.test_models.test_base_model import Test_instantiation
 from models.amenity import Amenity
 
+
 class test_Amenity(Test_instantiation):
     """ """
 
