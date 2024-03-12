@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines the HBnB console"""
+"""Defines the HBnB console default behaviour"""
 import cmd
 import sys
 from models.base_model import BaseModel
@@ -38,7 +38,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """Exit when reaching EOF"""
-        print("")
         return True
 
     def do_create(self, args):
