@@ -28,6 +28,47 @@ class HBNBCommand(cmd.Cmd):
             'latitude': float, 'longitude': float
             }
 
+    def preloop(self):
+        """Prints if isatty is false"""
+        if not sys.__stdin__.isatty():
+            print('(hbnb)')
+
+    def precmd(self, line):
+        """Reformat command line for advanced command syntax"""
+        _cmd = _cls = _id = _args = ''
+        if not ('.' in line and '(' in line and ')' in line):
+            return line
+
+        try:
+            pline = line[:]
+            _cls = pline[:pline.find('.')]
+            _cmd = pline[pline.find('.') + 1:pline.find('(')]
+            if _cmd not in HBNBCommand.dot_cmds:
+                raise Exception
+            pline = pline[pline.find('(') + 1:pline.find(')')]
+            if pline:
+                pline = pline.partition(', ')
+                _id = pline[0].replace('\"', '')
+                pline = pline[2].strip()
+                if pline:
+                    if pline[0] == '{' and pline[-1] == '}'\
+                            and type(eval(pline)) is dict:
+                        _args = pline
+                    else:
+                        _args = pline.replace(',', '')
+                        _args = _args.replace('\"', '')
+            line = ' '.join([_cmd, _cls, _id, _args])
+        except Exception as mess:
+            pass
+        finally:
+            return line
+
+    def postcmd(self, stop, line):
+        """Prints if isatty is false"""
+        if not sys.__stdin__.isatty():
+            print('(hbnb) ', end='')
+        return stop
+
     def emptyline(self):
         """Do nothing when receiving an empty line"""
         pass
